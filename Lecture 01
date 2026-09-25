@@ -1,0 +1,300 @@
+# OOP - To map with real world scenarios, we started using objects in code. This is called OOP
+# The flow is like - 
+# 1. We learnt about (Procedural method) - means writing the code for ecah
+# program each time.. ex-
+# a = 0
+# b = 2
+# sum = a+b
+# print(sum)
+
+# 2.(Function method) - It decreases the redundancy and increasing the reusuability of program
+# ex -
+# def add(a,b):
+#     print(a+b)
+# add(0,2)
+
+# 3. Object-Oriented Programming(OOP) - better organization and management of complex state ✅
+# It also decreases redundancy and increase the reusability of the program..
+# First we define the class further identical objects are formed... 
+# (Imp) -> List, string, tuple, set, dictionary, int, float, bool(True & Flase) are ex of OOP
+
+# Creating a class
+class Students:
+    name = "MOON x Dino(*-*)!"
+    Age = 18
+    Semester = 3
+# Points - 'class' is an keyword,
+#          We usually define or write the class's name first letter in capital letter.. 
+#          here name, Age, Semester are basic things/qualities or traits that this 
+#          particular class has.. 
+
+# Creating an object
+s1 = Students()
+s1.name = "Cosmic x Intruder"
+print(s1.name) # Cosmic x Intruder
+
+# How to define an object -> s1 - object name = class name()! 
+# Objects are also called 'Instance' 
+# Key distinction between class attribute and default parameters in fucntions..
+# Default parameter: "If the caller doesn't provide a value, use this value."
+# Class attribute: "This value belongs to the class and can be accessed by instances unless
+# an instance has its own value."
+# (example)
+class Students: # this is an class
+    name = "MOON x Dino(*-*)!"
+
+s1 = Students() # -> this is an object
+s2 = Students() # -> this is an object
+
+s1.name = "Cosmic x Intruder"
+
+print(s1.name) # Cosmic x Intruder
+print(s2.name) # MOON x Dino(*-*)!
+print(Students.name) # MOON x Dino(*-*)!
+# Every object which is created/formed from Students class will have the attribute name -
+# MOON x Dino(*-*)!
+
+#Functions mainly give you: "Write the operation once → reuse it with different data."
+#OOP gives you: "Define the structure + data + behavior once → create many independent objects
+# that follow that structure."
+# And there's another important advantage: encapsulation.
+
+# Constructor/Init function() :- All classes have a funcation called __init__(), which is 
+# always executed when the object is being created/initiated...
+# Creating init() in previous example..
+class Student:
+    name = "Nubela Eye"
+    
+    def __init__(self): # constructor always takes a parameter - "self" or referred as object
+        print(self.name) # the 'self' is almost very similar to parameter in any function..
+        print("The object has been created successfully..")
+    
+s3 = Student() # (Imp) - the use of this '()' in "Students()" is for calling that predefined 
+# init()/constructor by python already... If you dont write still you program will run!!
+# SELF is always the first agrument given to the init/construtor() function maybe similar
+# to named of keyword function... It it always necessary to pass or write self in init().
+# and self -> can be also renamed as per your wish example.. 
+# def init(abc, fullname):
+    # abc.name = fullname
+# but generally we use 'self' name..
+#So what exactly is self? - The self parameter is an reference to the current instance of
+# the class, and is used to access variables that belong to the class..
+
+# When you do:
+# s1 = Student("Pranjal", 18)
+# Python effectively makes the call behave roughly like: Student.__init__(s1, "Pranjal", 18)
+
+# self  → s1
+# name  → "Pranjal"
+# age   → 18
+
+# That's why: self.name = name
+# This function belongs to an object and can work with that object's own data through self.
+# We can even use these functions with defined objects too.. like-
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+s1 = Student("Pranjal")
+s2 = Student("Rahul")
+
+s1.introduce() # My name is Pranjal
+# OR
+print(s1.name) # Pranjal
+s2.introduce() # My name is Rahul
+
+# all this name, Age, Semster or variables are known as arguments of the given class Students
+
+# Doubt: 
+# Can we form an object without calling the objects?? Since python uses or we define init()
+# function.. for calling it we use '()' after class name to define a particular object if 
+# we don't use these '()' then? Would still our program run?
+
+# Answer/concept:
+# there's an important distinction between referring to a class and creating an object
+# 1. With () -> s1 = Student("Pranjal")
+# Here you're creating an object. So s1 is an actual Student object.
+
+# 2. Without ()
+# s1 = Student
+# This does run. But s1 is not an object/instance of Student.
+# Instead, s1 refers to the class itself.
+# You can see it:- 
+# print(s1) # <class '__main__.Student'>
+# print(type(s1)) # <class 'type'>
+
+# One more interesting thing
+# Even if you don't define __init__() yourself, you can still create an object:
+# class Student:
+#     pass
+
+# s1 = Student()
+
+class NewStudent:
+    # There are two types of constructors to be defined-
+    # 1. Default Constructors - in which only one or self argument is passed and even if we
+    # don't write the default constructors it is managed by python too..
+    # def __init__(self):
+    #     pass
+
+    # 2. Parameterized Constructors - in which more than one agrument is passed.. But we 
+    # usually define only one constructor in our whole class or work accordingly as per need
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+        print("Your name and marks has been stored successfully..")
+        
+n1 = NewStudent("Piyush", 97)
+
+print(n1.name)
+print(n1.marks)
+
+# More on Attributes...
+# Class arguments - all this name, Age, Semster or variables are known as Class Arguments
+# usually same for all objects..  defined outside of the constructors..
+# ex-name = "MOON x Dino(*-*)!"
+# Intance/object arguments - the data which is usually different for each object are called
+# Intance arguments or Class arguments.. ex- self.name, self.marks, etc.. defined in any
+# following constructor..
+# (IMP) Precedence order -> Object attribute has higher precedence than class attribute
+# example is given below.. focus on attribut name in both class and object attribute..
+# Object attr will get higher priority if the name/attribut is same..
+
+# Storing data on behalf of user..
+class StoreData:
+    
+    name = "Doremon!!"
+    
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+n = input("Enter you name: ")
+m = int(input("Enter your marks: "))
+
+h1 = StoreData(n,m)
+
+print("Your name is: " + h1.name)
+print("You got: ", h1.marks) # we can't concatinate str and int here of course which
+# is an error but here something you should notice -> We can't perform this code: 
+# print("You got: "+ h1.marks) but we can do it with print("Your name is: " + h1.name)
+
+# --- Methods...
+# All the functions defined inside the class are said to be as "Methods.."
+# Where as, class is combination of both - attribut(data) and methods(functions)
+# WTF!! all the functions which we're using in str, int, dict, list were methods defined in 
+# respective classes of list, int, str, etc... Means we can create our own datatype now with
+# the help of class and methods!!
+# One important thing to keep in mind that we have to write self keyword or word in every
+# methods or functions which is been created by us..
+
+class Methods:
+    
+    def __init__(self, name, marks):
+        self.name= name
+        self.marks = marks
+    
+    def welcome(self):
+        print("WELCOME!, "+ self.name)
+        
+    def Result(self):
+        print("Result", self.marks)
+
+s = Methods("Pipo",89)
+
+s.welcome()
+s.Result()
+
+# HOMEWORK QUESTION - Create student class that takes name and marks of 3 subjects as args
+# in a constructor. Then create a method to print their average.
+
+# Soln-
+class TakesData:
+    
+    def __init__(self, name, m1,m2,m3):
+        self.name = name
+        self.m1 = m1
+        self.m2 = m2
+        self.m3 = m3
+    
+    def avg(self):
+        return "The average marks is: ", (self.m1+self.m2+self.m3)//3
+
+Newscholar = TakesData("Tarun",64,33,32)
+
+print(Newscholar.name)
+print(Newscholar.avg())        
+
+# Since we working with OOP in python so it also comes with dynamic typing.. a = 1 -> a = 4
+
+# --- Static Methods..
+# Methods that don't use the self parameter(work at class level)
+# So, basically if you dont want to use any attributes of class like name or self.name..
+# then you can define a static method with writing or adding "@staticmethod" also known as
+# decorator.. example ->
+# What is decorator? - A decorator allows us to wrap a funciton in order to extend the 
+# behaviour of the wrapped function, without permanently modifying it..
+
+class School:
+    
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+        
+    @staticmethod
+    def hello():
+        return "hello!!"
+
+n2 = School("Jellyfish", 80)
+print(n2.name)
+print(n2.marks)
+print(n2.hello())
+
+# ---- Moving towards the Four pillar of OOP - 
+# 1. Abstraction
+# 2. Encapsulation
+# 3. Inheritance
+# 4. Polymorphism
+
+# 1. (Abstraction) -
+# Hiding the implementation details of a class and only showing the essential features to
+# the user..
+
+# 2. (Encapsulation) -
+# Wrapping data and funcions into a single unit(object) -> which we having doing already!!
+
+# Homework - Create Account class with 2 attributes - balance and account no.
+# Create methods for debit, credit and printing the current balance..
+
+# (Solution)..
+class Account:
+    
+    balance = 0
+    acc_no = "123XX"
+    
+    def __init__(self, balance, account_no):
+        self.balance = balance
+        self.acc_no = account_no
+    
+    def debit(self, money_debited):
+        global balance
+        balance = self.balance - money_debited
+    
+    def credit(self, money_credited):
+        global balance
+        balance = self.balance + money_credited
+    
+    @staticmethod
+    def Curren_bal():
+        print(balance)
+
+emp01 = Account(275,"CRAZY")
+emp01.credit(45)
+emp01.Curren_bal()
+
+# Okay, so Lecture no. 01 ends here...
+# Thanks for reading !!
+# See you in the next one..
